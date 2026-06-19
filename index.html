@@ -3,29 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CardSwap Dugout</title>
+    <title>CardSwap Dugout | Premium Sports Card Trades</title>
+    <meta
+      name="description"
+      content="A polished sports card marketplace homepage for featured cards, trade offers, checkout planning, and admin review."
+    />
+    <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" id="top">
       <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#top">CardSwap Dugout</a>
-        <div class="nav-links"><a href="#cards">Cards</a><a href="#trade">Trade</a><a href="#admin">Admin</a></div>
-        <span class="mobile-menu" aria-hidden="true">☰</span>
+        <a class="brand" href="#top" aria-label="CardSwap Dugout home">
+          <span class="brand-mark">CD</span>
+          <span>CardSwap Dugout</span>
+        </a>
+        <div class="nav-links">
+          <a href="#cards">Featured Cards</a>
+          <a href="#trade">Trade Center</a>
+          <a href="#checkout">Cart</a>
+          <a href="#admin">Admin</a>
+        </div>
+        <a class="nav-cta" href="#trade">Make an offer</a>
       </nav>
-      <section class="hero" id="top">
-        <div><span class="eyebrow">Sports cards • trades • collector friendly</span><h1>Buy, trade, and manage premium sports cards in one clean marketplace.</h1><p>Showcase card photos, pricing, teams, and descriptions while giving collectors a simple way to propose trades with image uploads.</p><div class="hero-actions"><a class="button primary" href="#cards">Browse cards</a><a class="button secondary" href="#trade">Start a trade</a></div></div>
-        <aside class="hero-card"><span class="icon">✓</span><strong>Admin-ready workflow</strong><p>Review every request, compare offered card photos, then accept or decline from one dashboard.</p></aside>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Verified sports cards • Live trade desk • Collector first</span>
+          <h1>A premium dugout for buying, trading, and managing standout sports cards.</h1>
+          <p>
+            CardSwap Dugout gives collectors an official-looking marketplace experience with featured inventory,
+            trade uploads, cart estimates, and a lightweight admin review queue.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#cards">Explore the showcase</a>
+            <a class="button secondary" href="#trade">Submit a trade</a>
+          </div>
+          <dl class="hero-stats" aria-label="Marketplace highlights">
+            <div><dt>6</dt><dd>featured lots</dd></div>
+            <div><dt>24h</dt><dd>offer response</dd></div>
+            <div><dt>100%</dt><dd>photo required</dd></div>
+          </dl>
+        </div>
+        <aside class="hero-stack" aria-label="Highlighted card preview">
+          <article class="spotlight-card baseball-card">
+            <span class="badge">Dugout Pick</span>
+            <div class="card-photo" role="img" aria-label="Baseball card style placeholder"></div>
+            <div class="card-meta"><strong>Shohei Ohtani</strong><span>Chrome Refractor • Dodgers</span></div>
+          </article>
+          <article class="mini-ticket">
+            <span>Trade desk</span>
+            <strong>3 offers awaiting review</strong>
+          </article>
+        </aside>
       </section>
     </header>
+
     <main>
-      <section class="toolbar" id="cards"><div><span class="eyebrow">Available inventory</span><h2>Featured cards</h2></div><label class="search">🔎<input id="search" placeholder="Search by player, team, or details" /></label></section>
-      <section class="card-grid" id="cardGrid" aria-live="polite"></section>
-      <section class="trade-layout" id="trade">
-        <aside class="cart-panel"><div class="section-title"><span class="icon">🛒</span><h2>Trade cart</h2></div><div id="cartItems"><p class="muted">Add cards you want to buy or trade for. They will be attached to your request.</p></div></aside>
-        <form class="trade-form" id="tradeForm"><span class="eyebrow">Collector trade request</span><h2>Upload your offer</h2><div class="form-row"><label>Your name<input id="name" required /></label><label>Email<input id="email" required type="email" /></label></div><label>Upload pictures of cards you want to trade<span class="upload-box">⬆️<input id="files" required type="file" multiple accept="image/*" /><small id="fileCount">Choose one or more card photos</small></span></label><label>Trade notes<textarea id="notes" placeholder="Tell us about condition, grading, cash differences, or preferred cards."></textarea></label><button class="button primary" type="submit">Submit trade request</button></form>
+      <section class="trust-strip" aria-label="Service highlights">
+        <div><strong>Condition notes</strong><span>Every listing includes centering, corners, and surface details.</span></div>
+        <div><strong>Secure workflow</strong><span>Cart selections attach directly to collector trade requests.</span></div>
+        <div><strong>Admin controls</strong><span>Accept, decline, and monitor offer value from one dashboard.</span></div>
       </section>
-      <section class="admin" id="admin"><div class="section-title"><span class="icon">🛡️</span><div><span class="eyebrow">Admin area</span><h2>Trade request queue</h2></div></div><div class="request-list" id="requestList"></div></section>
+
+      <section class="toolbar" id="cards">
+        <div>
+          <span class="eyebrow dark">Curated inventory</span>
+          <h2>Featured sports cards</h2>
+          <p>Browse baseball, basketball, football, and global icons with professional card-style presentation.</p>
+        </div>
+        <label class="search">🔎<input id="search" placeholder="Search player, team, sport, or grade" /></label>
+      </section>
+      <section class="card-grid" id="cardGrid" aria-live="polite"></section>
+
+      <section class="trade-layout" id="trade">
+        <aside class="cart-panel" id="checkout">
+          <div class="section-title"><span class="icon">🛒</span><div><span class="eyebrow dark">Checkout queue</span><h2>Trade cart</h2></div></div>
+          <div id="cartItems"></div>
+          <div class="cart-note">No payment is collected here. Your cart simply tells the trade desk which cards you want.</div>
+        </aside>
+
+        <form class="trade-form" id="tradeForm">
+          <span class="eyebrow dark">Collector offer form</span>
+          <h2>Upload your card offer</h2>
+          <p class="muted">Attach photos and notes so the CardSwap team can evaluate condition, grading, and value.</p>
+          <div class="form-row">
+            <label>Your name<input id="name" required autocomplete="name" /></label>
+            <label>Email<input id="email" required type="email" autocomplete="email" /></label>
+          </div>
+          <label>
+            Upload pictures of cards you want to trade
+            <span class="upload-box">⬆️<input id="files" required type="file" multiple accept="image/*" /><small id="fileCount">Choose one or more card photos</small></span>
+          </label>
+          <label>Trade notes<textarea id="notes" placeholder="Tell us about grade, condition, comps, cash difference, or preferred cards."></textarea></label>
+          <button class="button primary" type="submit">Submit trade request</button>
+        </form>
+      </section>
+
+      <section class="admin" id="admin">
+        <div class="section-title"><span class="icon">🛡️</span><div><span class="eyebrow dark">Operations dashboard</span><h2>Admin trade command center</h2></div></div>
+        <div class="dashboard-metrics" id="dashboardMetrics" aria-live="polite"></div>
+        <div class="request-list" id="requestList"></div>
+      </section>
     </main>
     <script src="/src/app.js"></script>
   </body>
