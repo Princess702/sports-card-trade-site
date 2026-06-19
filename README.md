@@ -15,3 +15,9 @@ Then open <http://localhost:5173>.
 ```bash
 npm run build
 ```
+
+Check that the clean PR contains no unresolved merge conflict markers:
+
+```bash
+npm run check:conflicts
+```
