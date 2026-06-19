@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CardSwap Dugout | Sports Card Trading Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="CardSwap Dugout home"><span class="brand-mark">CD</span><span>CardSwap Dugout</span></a>
+        <div class="nav-links"><a href="#marketplace">Marketplace</a><a href="#trade">Trade Center</a><a href="#admin">Admin</a></div>
+        <a class="nav-cta" href="#trade">Submit Trade</a>
+        <button class="mobile-menu" aria-label="Open menu">☰</button>
+      </nav>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Verified cards • collector-first trading</span>
+          <h1>The premium dugout for buying and trading sports cards.</h1>
+          <p>Browse curated cards, build a trade cart, upload photos of your offer, and manage every request with a polished admin workflow.</p>
+          <div class="hero-actions"><a class="button primary" href="#marketplace">Explore marketplace</a><a class="button ghost" href="#admin">View admin queue</a></div>
+          <div class="trust-row"><span>12k+ collectors</span><span>$2.4M traded</span><span>48hr review window</span></div>
+        </div>
+        <div class="hero-showcase" aria-label="Featured card preview">
+          <div class="floating-card card-art card-art-primary"><span class="card-label">Chrome</span><strong>Shohei Ohtani</strong><small>Dodgers • Refractor</small><b>$185</b></div>
+          <div class="floating-card card-art card-art-secondary"><span class="card-label">Rookie</span><strong>Caitlin Clark</strong><small>Fever • Showcase</small><b>$240</b></div>
+          <div class="market-stats"><span>Live offers</span><strong>38</strong><small>awaiting review</small></div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="section-heading" id="marketplace"><span class="eyebrow dark">Marketplace</span><h2>Featured sports cards</h2><p>Search premium listings by player, team, or card details. Add the cards you want to buy or trade for.</p></section>
+      <section class="toolbar"><label class="search"><span>Search</span><input id="search" placeholder="Try “Dodgers”, “rookie”, or “Prizm”" /></label></section>
+      <section class="card-grid" id="cardGrid" aria-live="polite"></section>
+
+      <section class="trade-shell" id="trade">
+        <div class="section-heading compact"><span class="eyebrow dark">Trade Center</span><h2>Build a trade package</h2><p>Select cards, upload offer photos, and send the request directly to the review dashboard.</p></div>
+        <div class="trade-layout">
+          <aside class="cart-panel"><div class="panel-heading"><span class="panel-icon">🛒</span><div><span>Collector cart</span><h3>Cards requested</h3></div></div><div id="cartItems"></div></aside>
+          <form class="trade-form" id="tradeForm"><div class="panel-heading"><span class="panel-icon">⬆</span><div><span>Offer details</span><h3>Upload trade request</h3></div></div><div class="form-row"><label>Your name<input id="name" required placeholder="Alex Morgan" /></label><label>Email<input id="email" required type="email" placeholder="collector@example.com" /></label></div><label>Photos of cards you want to trade<span class="upload-box"><strong>Drag in card photos or choose files</strong><input id="files" required type="file" multiple accept="image/*" /><small id="fileCount">PNG, JPG, or WEBP accepted</small></span></label><label>Trade notes<textarea id="notes" placeholder="Mention card condition, grading, comps, cash difference, shipping notes, or preferred cards."></textarea></label><button class="button primary full" type="submit">Send trade for review</button></form>
+        </div>
+      </section>
+
+      <section class="admin-dashboard" id="admin"><div class="admin-top"><div><span class="eyebrow dark">Admin dashboard</span><h2>Trade request command center</h2><p>Review incoming collector offers and mark each request as accepted or declined.</p></div><div class="admin-kpis"><article><span>Pending</span><strong id="pendingCount">0</strong></article><article><span>Accepted</span><strong id="acceptedCount">0</strong></article><article><span>Declined</span><strong id="declinedCount">0</strong></article></div></div><div class="request-list" id="requestList"></div></section>
+    </main>
+
+    <script src="/src/app.js"></script>
+  </body>
+</html>
