@@ -210,10 +210,13 @@ main {
 .card-art::before {
   content: "";
   position: absolute;
-  inset: 70px 32px 86px;
+  inset: 68px 28px 72px;
   border: 2px solid rgba(255, 255, 255, 0.28);
-  border-radius: 50% 50% 12px 12px;
-  background: linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.03));
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.03));
+  background-size: 18px 100%, auto;
 }
 
 .card-shine {
@@ -225,12 +228,52 @@ main {
   background: rgba(255, 255, 255, 0.28);
 }
 
+.card-player {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 48%;
+  width: 112px;
+  height: 142px;
+  transform: translate(-50%, -50%);
+  border-radius: 52px 52px 30px 30px;
+  background:
+    radial-gradient(circle at 50% 19%, #f8fafc 0 20px, transparent 21px),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(226, 232, 240, 0.76));
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
+}
+
+.card-player::before,
+.card-player::after {
+  content: "";
+  position: absolute;
+  top: 56px;
+  width: 34px;
+  height: 76px;
+  border-radius: 20px;
+  background: rgba(248, 250, 252, 0.82);
+}
+
+.card-player::before { left: -20px; transform: rotate(18deg); }
+.card-player::after { right: -20px; transform: rotate(-18deg); }
+
+.card-player span {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
+  color: rgba(15, 23, 42, 0.62);
+  font-size: 2.15rem;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+}
+
 .card-art strong {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   align-self: center;
-  margin-top: 82px;
-  font-size: 4.7rem;
+  margin-top: 162px;
+  font-size: 3.1rem;
   line-height: 1;
   letter-spacing: -0.08em;
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
@@ -314,7 +357,9 @@ main { padding: 72px clamp(18px, 5vw, 36px) 90px; }
 
 .listing { overflow: hidden; }
 .listing .card-art { min-height: 240px; margin: 16px; border-width: 8px; box-shadow: none; }
-.listing .card-art strong { margin-top: 54px; font-size: 3.7rem; }
+.listing .card-art strong { margin-top: 132px; font-size: 2.7rem; }
+.listing .card-player { width: 88px; height: 116px; }
+.listing .card-player span { top: 57px; font-size: 1.7rem; }
 .listing-body { display: flex; flex-direction: column; gap: 16px; padding: 0 22px 24px; }
 .team { margin: 0 0 4px; color: var(--orange); font-weight: 900; }
 .listing h3 { margin: 0; font-size: 1.22rem; letter-spacing: -0.03em; }

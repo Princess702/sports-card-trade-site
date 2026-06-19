@@ -1,10 +1,10 @@
 const cards = [
-  { id: 1, name: 'Shohei Ohtani Chrome Refractor', team: 'Los Angeles Dodgers', price: 185, grade: 'Raw NM-MT', rarity: 'Chrome Refractor', palette: 'blue', description: '2024 Topps Chrome refractor with sharp corners, clean centering, and bright surface gloss.' },
-  { id: 2, name: 'Caitlin Clark Rookie Showcase', team: 'Indiana Fever', price: 240, grade: 'PSA Ready', rarity: 'Rookie Insert', palette: 'gold', description: 'High-demand rookie insert, sleeved immediately and protected in a fresh top loader.' },
-  { id: 3, name: 'Patrick Mahomes Prizm Silver', team: 'Kansas City Chiefs', price: 320, grade: 'BGS 9', rarity: 'Silver Prizm', palette: 'red', description: 'Premium football parallel with crisp edges and standout eye appeal for Chiefs collectors.' },
-  { id: 4, name: 'Victor Wembanyama Court Kings', team: 'San Antonio Spurs', price: 210, grade: 'Raw Mint', rarity: 'Art Insert', palette: 'purple', description: 'Modern basketball art card featuring one of the hobby’s most exciting young stars.' },
-  { id: 5, name: 'Aaron Judge Stadium Club Auto', team: 'New York Yankees', price: 450, grade: 'Auto 10', rarity: 'On-card Auto', palette: 'navy', description: 'Signature showcase piece for serious Yankees collections with a bold on-card autograph.' },
-  { id: 6, name: 'Lionel Messi Global Icons', team: 'Inter Miami CF', price: 175, grade: 'Raw NM', rarity: 'Global Icons', palette: 'teal', description: 'Colorful soccer insert with clean borders, strong centering, and a premium action layout.' },
+  { id: 1, name: 'Shohei Ohtani Chrome Refractor', team: 'Los Angeles Dodgers', price: 185, grade: 'Raw NM-MT', rarity: 'Chrome Refractor', palette: 'blue', jersey: '17', sport: 'Baseball', description: '2024 Topps Chrome refractor with sharp corners, clean centering, and bright surface gloss.' },
+  { id: 2, name: 'Caitlin Clark Rookie Showcase', team: 'Indiana Fever', price: 240, grade: 'PSA Ready', rarity: 'Rookie Insert', palette: 'gold', jersey: '22', sport: 'Basketball', description: 'High-demand rookie insert, sleeved immediately and protected in a fresh top loader.' },
+  { id: 3, name: 'Patrick Mahomes Prizm Silver', team: 'Kansas City Chiefs', price: 320, grade: 'BGS 9', rarity: 'Silver Prizm', palette: 'red', jersey: '15', sport: 'Football', description: 'Premium football parallel with crisp edges and standout eye appeal for Chiefs collectors.' },
+  { id: 4, name: 'Victor Wembanyama Court Kings', team: 'San Antonio Spurs', price: 210, grade: 'Raw Mint', rarity: 'Art Insert', palette: 'purple', jersey: '1', sport: 'Basketball', description: 'Modern basketball art card featuring one of the hobby’s most exciting young stars.' },
+  { id: 5, name: 'Aaron Judge Stadium Club Auto', team: 'New York Yankees', price: 450, grade: 'Auto 10', rarity: 'On-card Auto', palette: 'navy', jersey: '99', sport: 'Baseball', description: 'Signature showcase piece for serious Yankees collections with a bold on-card autograph.' },
+  { id: 6, name: 'Lionel Messi Global Icons', team: 'Inter Miami CF', price: 175, grade: 'Raw NM', rarity: 'Global Icons', palette: 'teal', jersey: '10', sport: 'Soccer', description: 'Colorful soccer insert with clean borders, strong centering, and a premium action layout.' },
 ];
 
 let cart = [];
@@ -31,7 +31,7 @@ function matches(card, query) {
 
 function cardArtwork(card) {
   const initials = card.name.split(' ').slice(0, 2).map(part => part[0]).join('');
-  return `<div class="card-art ${card.palette}"><div class="card-shine"></div><span class="card-label">${card.rarity}</span><strong>${initials}</strong><small>${card.team}</small><em>${card.grade}</em></div>`;
+  return `<div class="card-art ${card.palette}"><div class="card-shine"></div><span class="card-label">${card.rarity}</span><div class="card-player" aria-hidden="true"><span>${card.jersey}</span></div><strong>${initials}</strong><small>${card.team} • ${card.sport}</small><em>${card.grade}</em></div>`;
 }
 
 function renderCards() {
