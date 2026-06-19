@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CardSwap Dugout</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top">CardSwap Dugout</a>
+        <div class="nav-links"><a href="#cards">Cards</a><a href="#trade">Trade</a><a href="#admin">Admin</a></div>
+        <span class="mobile-menu" aria-hidden="true">☰</span>
+      </nav>
+      <section class="hero" id="top">
+        <div><span class="eyebrow">Sports cards • trades • collector friendly</span><h1>Buy, trade, and manage premium sports cards in one clean marketplace.</h1><p>Showcase card photos, pricing, teams, and descriptions while giving collectors a simple way to propose trades with image uploads.</p><div class="hero-actions"><a class="button primary" href="#cards">Browse cards</a><a class="button secondary" href="#trade">Start a trade</a></div></div>
+        <aside class="hero-card"><span class="icon">✓</span><strong>Admin-ready workflow</strong><p>Review every request, compare offered card photos, then accept or decline from one dashboard.</p></aside>
+      </section>
+    </header>
+    <main>
+      <section class="toolbar" id="cards"><div><span class="eyebrow">Available inventory</span><h2>Featured cards</h2></div><label class="search">🔎<input id="search" placeholder="Search by player, team, or details" /></label></section>
+      <section class="card-grid" id="cardGrid" aria-live="polite"></section>
+      <section class="trade-layout" id="trade">
+        <aside class="cart-panel"><div class="section-title"><span class="icon">🛒</span><h2>Trade cart</h2></div><div id="cartItems"><p class="muted">Add cards you want to buy or trade for. They will be attached to your request.</p></div></aside>
+        <form class="trade-form" id="tradeForm"><span class="eyebrow">Collector trade request</span><h2>Upload your offer</h2><div class="form-row"><label>Your name<input id="name" required /></label><label>Email<input id="email" required type="email" /></label></div><label>Upload pictures of cards you want to trade<span class="upload-box">⬆️<input id="files" required type="file" multiple accept="image/*" /><small id="fileCount">Choose one or more card photos</small></span></label><label>Trade notes<textarea id="notes" placeholder="Tell us about condition, grading, cash differences, or preferred cards."></textarea></label><button class="button primary" type="submit">Submit trade request</button></form>
+      </section>
+      <section class="admin" id="admin"><div class="section-title"><span class="icon">🛡️</span><div><span class="eyebrow">Admin area</span><h2>Trade request queue</h2></div></div><div class="request-list" id="requestList"></div></section>
+    </main>
+    <script src="/src/app.js"></script>
+  </body>
+</html>
