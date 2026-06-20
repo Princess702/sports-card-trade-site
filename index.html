@@ -6,7 +6,7 @@
     <title>CardTrade-Central | Premium Sports Card Trades</title>
     <meta
       name="description"
-      content="A polished sports card marketplace homepage for featured cards, trade offers, checkout planning, and admin review."
+      content="A polished sports card marketplace homepage for featured cards, trade offers, checkout planning, and private offer review."
     />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="./src/styles.css" />
@@ -22,7 +22,6 @@
           <a href="#cards">Featured Cards</a>
           <a href="#trade">Trade Center</a>
           <a href="#checkout">Cart</a>
-          <a href="#admin">Admin</a>
         </div>
         <a class="nav-cta" href="#trade">Make an offer</a>
       </nav>
@@ -33,7 +32,7 @@
           <h1>A premium dugout for buying, trading, and managing standout sports cards.</h1>
           <p>
             CardTrade-Central gives collectors an official-looking marketplace experience with featured inventory,
-            trade uploads, cart estimates, and a lightweight admin review queue.
+            trade uploads, cart estimates, and a private offer review workflow.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#cards">Explore the showcase</a>
@@ -63,7 +62,7 @@
       <section class="trust-strip" aria-label="Service highlights">
         <div><strong>Condition notes</strong><span>Every listing includes centering, corners, and surface details.</span></div>
         <div><strong>Secure workflow</strong><span>Cart selections attach directly to collector trade requests.</span></div>
-        <div><strong>Admin controls</strong><span>Accept, decline, and monitor offer value from one dashboard.</span></div>
+        <div><strong>Private review</strong><span>Submitted offers are routed for follow-up without exposing collector details publicly.</span></div>
       </section>
 
       <section class="toolbar" id="cards">
@@ -100,11 +99,7 @@
         </form>
       </section>
 
-      <section class="admin" id="admin">
-        <div class="section-title"><span class="icon">🛡️</span><div><span class="eyebrow dark">Operations dashboard</span><h2>Admin trade command center</h2></div></div>
-        <div class="dashboard-metrics" id="dashboardMetrics" aria-live="polite"></div>
-        <div class="request-list" id="requestList"></div>
-      </section>
+      <!-- TODO: Add a real admin dashboard later behind a secure login page. Do not expose customer requests, emails, accept buttons, or decline buttons on the public site. -->
     </main>
     <script src="./src/app.js"></script>
   </body>
