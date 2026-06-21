@@ -81,35 +81,14 @@ const cards = [
 ];
 
 let cart = [];
-let requests = [
-  {
-    id: 101,
-    customer: 'Maya R.',
-    email: 'maya@example.com',
-    wanted: cards[0].name,
-    offered: '2 images uploaded',
-    notes: 'Offering a graded card and cash difference for review.',
-    status: 'Pending',
-  },
-  {
-    id: 102,
-    customer: 'Jordan P.',
-    email: 'jordan@example.com',
-    wanted: `${cards[2].name}, ${cards[4].name}`,
-    offered: '4 images uploaded',
-    notes: 'Interested in a two-card package and has comparable graded cards available.',
-    status: 'Accepted',
-  },
-];
 
 const cardGrid = document.querySelector('#cardGrid');
 const search = document.querySelector('#search');
 const cartItems = document.querySelector('#cartItems');
 const tradeForm = document.querySelector('#tradeForm');
-const requestList = document.querySelector('#requestList');
-const dashboardMetrics = document.querySelector('#dashboardMetrics');
 const files = document.querySelector('#files');
 const fileCount = document.querySelector('#fileCount');
+const formMessage = document.querySelector('#formMessage');
 
 function money(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
@@ -149,21 +128,6 @@ function renderCart() {
   cartItems.innerHTML = `${cart.map(card => `<div class="cart-item"><span>${card.name}</span><strong>${money(card.price)}</strong><button aria-label="Remove ${card.name}" data-remove="${card.id}">×</button></div>`).join('')}<strong class="total">Estimated trade value: ${money(total)}</strong>`;
 }
 
-function renderMetrics() {
-  const pending = requests.filter(request => request.status === 'Pending').length;
-  const accepted = requests.filter(request => request.status === 'Accepted').length;
-  dashboardMetrics.innerHTML = `
-    <article><span>Pending</span><strong>${pending}</strong></article>
-    <article><span>Accepted</span><strong>${accepted}</strong></article>
-    <article><span>Total value</span><strong>${money(cards.reduce((sum, card) => sum + card.price, 0))}</strong></article>
-  `;
-}
-
-function renderRequests() {
-  requestList.innerHTML = requests.map(request => `<article class="request"><div><span class="status ${request.status.toLowerCase()}">${request.status}</span><h3>${request.customer}</h3><p>${request.email}</p></div><p><strong>Wants:</strong> ${request.wanted}</p><p><strong>Offer:</strong> ${request.offered}</p><p>${request.notes}</p><div class="admin-actions"><button class="accept" data-status="Accepted" data-id="${request.id}">✓ Accept</button><button class="decline" data-status="Declined" data-id="${request.id}">× Decline</button></div></article>`).join('');
-  renderMetrics();
-}
-
 cardGrid.addEventListener('click', event => {
   const id = Number(event.target.dataset.add);
   if (!id) return;
@@ -181,13 +145,6 @@ cartItems.addEventListener('click', event => {
   renderCart();
 });
 
-requestList.addEventListener('click', event => {
-  const id = Number(event.target.dataset.id);
-  if (!id) return;
-  requests = requests.map(request => request.id === id ? { ...request, status: event.target.dataset.status } : request);
-  renderRequests();
-});
-
 files.addEventListener('change', () => {
   fileCount.textContent = files.files.length ? `${files.files.length} file(s) selected for review` : 'Choose one or more card photos';
 });
@@ -196,24 +153,13 @@ search.addEventListener('input', renderCards);
 
 tradeForm.addEventListener('submit', event => {
   event.preventDefault();
-  const wanted = cart.length ? cart.map(card => card.name).join(', ') : 'General trade offer';
-  requests = [{
-    id: Date.now(),
-    customer: document.querySelector('#name').value,
-    email: document.querySelector('#email').value,
-    wanted,
-    offered: `${files.files.length} image${files.files.length === 1 ? '' : 's'} uploaded`,
-    notes: document.querySelector('#notes').value || 'No notes provided.',
-    status: 'Pending',
-  }, ...requests];
+  formMessage.textContent = 'Trade request ready. This demo does not send requests yet, so contact the owner directly to finish the trade.';
   cart = [];
   tradeForm.reset();
   fileCount.textContent = 'Choose one or more card photos';
   renderCards();
   renderCart();
-  renderRequests();
 });
 
 renderCards();
 renderCart();
-renderRequests();
